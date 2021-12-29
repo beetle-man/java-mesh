@@ -17,7 +17,6 @@
 package com.huawei.sermant.core.lubanops.integration.transport;
 
 import com.huawei.sermant.core.lubanops.integration.transport.netty.client.NettyClientFactory;
-import com.huawei.sermant.core.lubanops.integration.transport.websocket.WebSocketFactory;
 
 /**
  * 客户端连接管理类
@@ -27,10 +26,6 @@ import com.huawei.sermant.core.lubanops.integration.transport.websocket.WebSocke
  * @since 2021-08-07
  */
 public class ClientManager {
-    public static WebSocketFactory getWebSocketFactory() {
-        return WebSocketFactory.getInstance();
-    }
-
     public static NettyClientFactory getNettyClientFactory() {
         return NettyClientFactory.getInstance();
     }
