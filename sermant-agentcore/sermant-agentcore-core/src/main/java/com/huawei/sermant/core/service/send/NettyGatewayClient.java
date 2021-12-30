@@ -17,7 +17,7 @@
 package com.huawei.sermant.core.service.send;
 
 import com.huawei.sermant.core.common.LoggerFactory;
-import com.huawei.sermant.core.lubanops.bootstrap.config.AgentConfigManager;
+import com.huawei.sermant.core.config.ConfigManager;
 import com.huawei.sermant.core.lubanops.integration.transport.ClientManager;
 import com.huawei.sermant.core.lubanops.integration.transport.netty.client.NettyClient;
 import com.huawei.sermant.core.lubanops.integration.transport.netty.pojo.Message;
@@ -35,9 +35,9 @@ public class NettyGatewayClient implements GatewayClient {
 
     @Override
     public void start() {
+        GatewayConfig config = ConfigManager.getConfig(GatewayConfig.class);
         nettyClient = ClientManager.getNettyClientFactory().getNettyClient(
-                AgentConfigManager.getNettyServerIp(),
-                Integer.parseInt(AgentConfigManager.getNettyServerPort()));
+            config.getServerIp(), config.getServerPort());
     }
 
     @Override

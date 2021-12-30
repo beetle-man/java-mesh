@@ -52,7 +52,7 @@ public class AgentCoreEntrance {
             ConfigManager.initialize(argsMap);
 
             // 调用BootStrapImpl#main，启动luban核心功能
-            BootStrapImpl.main(instrumentation, argsMap);
+            //BootStrapImpl.main(instrumentation, argsMap);
 
             // 启动核心服务
             ServiceManager.initServices();

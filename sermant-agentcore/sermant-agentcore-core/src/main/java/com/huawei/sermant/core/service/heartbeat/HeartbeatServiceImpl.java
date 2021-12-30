@@ -36,6 +36,7 @@ import com.huawei.sermant.core.lubanops.integration.transport.netty.client.Netty
 import com.huawei.sermant.core.lubanops.integration.transport.netty.pojo.Message;
 import com.huawei.sermant.core.plugin.PluginManager;
 import com.huawei.sermant.core.plugin.common.PluginConstant;
+import com.huawei.sermant.core.service.send.GatewayConfig;
 import com.huawei.sermant.core.util.JarFileUtil;
 
 /**
@@ -96,9 +97,9 @@ public class HeartbeatServiceImpl implements HeartbeatService {
      */
     private void execute() {
         // 创建NettyClient
+        final GatewayConfig config = ConfigManager.getConfig(GatewayConfig.class);
         final NettyClient nettyClient = ClientManager.getNettyClientFactory().getNettyClient(
-                AgentConfigManager.getNettyServerIp(),
-                Integer.parseInt(AgentConfigManager.getNettyServerPort()));
+            config.getServerIp(), config.getServerPort());
         // 获取插件名和版本集合
         final Map<String, String> pluginVersionMap = PluginManager.getPluginVersionMap();
         // 循环运行
